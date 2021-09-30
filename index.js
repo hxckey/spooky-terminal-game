@@ -1,4 +1,4 @@
-const { CactusCareSimulator } = require('./spooky_mansion');
+const { ZombieCastle } = require('./spooky_mansion');
 
-const app = new CactusCareSimulator()
+const app = new ZombieCastle()
 app.run()

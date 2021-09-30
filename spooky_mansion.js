@@ -1,5 +1,5 @@
 // ---------------------------------------------------------
-// Run 'node index.js' to start looking after your cactus!
+// Run 'node index.js' to start playing!
 // ---------------------------------------------------------
 const readline = require('readline')
 const ui = readline.createInterface({
@@ -7,28 +7,28 @@ const ui = readline.createInterface({
     output: process.stdout
 });
 
-class PLANTError extends Error {
+class GameOver extends Error {
     constructor(msg){
-        super(`\nYOU\'RE CACTUS HAS DIED! ${msg}`);
-        this.name = 'CACTUSError';
+        super(`\nYou are dead... ${msg}`);
+        this.name = 'GameOver';
     };
     shout(){
         console.clear()
-        console.log(`You\'ve received a ${this.name}!`.toUpperCase());
+        console.log(`You have died...`.toUpperCase());
     }
 };
 
-const cacti = [{name: "Colin", spikes: "yes"}];
+const player = [{name: "Person X", ammo: 10, health: 5, }];
 
-class CactusCareSimulator {
+class ZombieCastle {
 
     run(){
         console.clear()
-        this.firstQuestion();
+        this.entranceHall();
     }
 
-    firstQuestion(){
-        ui.question('\nWelcome to the Cactus Care Simulator. We\'re glad you\'ve decided to adopt a cactus! What is the name of the cactus you\'d like?\n', input => {
+    entranceHall(){
+        ui.question('\n... you wake up in a dark entrance hall... you appear to be in some kind of mansion... what do you do?', input => {
             try {
                 this.user = cacti.find(u => u.name.toLowerCase() === input.toLowerCase());
                 if(!this.user){throw new Error(`Sorry! We don\'t have a cactus with that name :(`);}
@@ -44,7 +44,6 @@ class CactusCareSimulator {
         ui.question('Do you like cacti with spikes?\n', input => {
             if(input === this.user.spikes){
                 console.log('Excellent, he\'s all yours...');
-                this.showCactusGraphic();
             } else {
                 err.shout()
                 this.errorAndClose(err)
@@ -57,10 +56,6 @@ class CactusCareSimulator {
         ui.close();
     }
 
-    showCactusGraphic(){
-        console.log("        #%:.     \n#%=   ###%=:      \n##%=   |##%::       \n##%=   ###%=:       \n#%%=  |##%=:       \n##%== ###%=:    ===    \n##%%=!##%=:    ===    \n###%%##%=   :====   \n######%=: .:====     \n####%%=======       \n###%%%===:    \n|%#%%=:=:  \n####%=:    \n|##%%:    \n-------####%:---=\n|%#%%: ");
-    }
-
 }
 
-module.exports = { CactusCareSimulator }
+module.exports = { ZombieCastle }
