@@ -1,7 +1,11 @@
 // ---------------------------------------------------------
 // Run 'node index.js' to start playing!
 // ---------------------------------------------------------
-const readline = require('readline')
+const readline = require('readline');
+
+//return to this codeline later and lookup how to use inquirer npm
+const inquirer = require('inquirer');
+
 const ui = readline.createInterface({
     input: process.stdin,
     output: process.stdout
